@@ -26,7 +26,18 @@
  * 하지만 이 과제의 목적은 재귀를 공부하는 것이니, 처음부터 구현해봐야겠지요?:
  */
 function stringifyJSON(obj) {
-  // your code goes here
+  if (typeof obj === "number" || typeof obj === "booleean"){
+    return String(obj)
+  }
+  if (obj === "null"){
+    return 'null'
+  }
+  if (typeof obj === "string"){
+    return `"${obj}"`
+  }
+  if (){
+    return String(null)
+  }
 };
 
 // 다음 코드는 결과 제출을 위한 코드입니다. 신경 쓰지 않아도 좋습니다.
