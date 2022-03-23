@@ -26,18 +26,36 @@
  * 하지만 이 과제의 목적은 재귀를 공부하는 것이니, 처음부터 구현해봐야겠지요?:
  */
 function stringifyJSON(obj) {
-  if (typeof obj === "number" || typeof obj === "booleean"){
-    return String(obj)
-  }
-  if (obj === "null"){
+  if (obj === null){
     return 'null'
   }
+  if (typeof obj === "number" || typeof obj === "boolean"){
+    return String(obj)
+  }
+
   if (typeof obj === "string"){
     return `"${obj}"`
   }
-  if (){
-    return String(null)
+
+  //arr
+  if (Array.isArray(obj)){
+    const result = [];
+    obj.forEach((el) => {
+      result.push(stringifyJSON(el));
+    });
+    return  `[${result}]`;
   }
+
+  //object
+  if (typeof obj === "object"){
+    let result = "";
+    for(let key in obj){
+      result = result + `${stringifyJSON(key)}:${stringifyJSON(obj[key])},`  
+    }
+    result = result.substring(0, result.length -1)
+    return `{${result}}`
+  }
+
 };
 
 // 다음 코드는 결과 제출을 위한 코드입니다. 신경 쓰지 않아도 좋습니다.
